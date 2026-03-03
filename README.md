@@ -1,15 +1,15 @@
 Interface gráfica para controle e monitoramento em tempo real de sensores e atuadores robóticos utilizando ESP32 com comunicação via Wi-Fi. O sistema integra firmware embarcado em C++ com uma aplicação web desenvolvida em HTML, CSS e JavaScript, permitindo operação remota, execução de processos automáticos e acompanhamento de métricas.
 
 👉 VISÃO GERAL
-- O ESP32 opera em modo Access Point, hospedando um servidor HTTP na porta 80. Através de qualquer navegador conectado à rede criada pelo dispositivo, é possível:
-- Controlar manualmente 8 saídas digitais (atuadores)
+O ESP32 opera em modo Access Point, hospedando um servidor HTTP na porta 80. Através de qualquer navegador conectado à rede criada pelo dispositivo, é possível:
+- Controlar manualmente 8 saídas digitais (atuadores) 
 - Executar um processo automático sequencial
 - Monitorar 8 entradas digitais (sensores) em tempo real
 - Visualizar histórico de execução e tempo de ciclo
 - O sistema abstrai a complexidade do firmware embarcado por meio de uma interface web responsiva e intuitiva.
 
-👉 ARQUITETURA DO SISTEMA
 
+👉 ARQUITETURA DO SISTEMA
 ⏺️ CAMADA EMBARCADA (C++ / ESP32)
 - Servidor HTTP com WiFiServer
 - Controle de 8 saídas digitais
@@ -26,14 +26,14 @@ Interface gráfica para controle e monitoramento em tempo real de sensores e atu
 - Página dedicada ao processo automático
 - Página de histórico de execução
 
-👉 FUNCIONALIDADES PRINCIPAIS
 
+👉 FUNCIONALIDADES PRINCIPAIS
 ⏺️ CONTROLE MANUAL
 Permite acionamento individual de cada saída digital através de rotas HTTP específicas, mantendo sincronização de estado entre firmware e interface.
 
 ⏺️ PROCESSO AUTOMÁTICO
-- Execução sequencial de etapas industriais simuladas:
-- Acionamento de magazine
+Execução sequencial de etapas industriais simuladas:
+- Acionamento de magazine 
 - Avanço e recuo
 - Ativação de vácuo
 - Manipulação e liberação de peça
@@ -44,6 +44,7 @@ Endpoint /status retorna JSON com o estado atual dos sensores, permitindo leitur
 
 ⏺️ HISTÓRICO DE PROCESSOS
 Armazena número do ciclo executado, tempo total e horário relativo desde a inicialização do sistema.
+
 
 👉 CONCEITOS TÉCNICOS APLICADOS
 - Sistemas embarcados com ESP32

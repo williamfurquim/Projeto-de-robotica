@@ -1,6 +1,7 @@
 Interface gráfica para controle e monitoramento em tempo real de sensores e atuadores robóticos utilizando ESP32 com comunicação via Wi-Fi. O sistema integra firmware embarcado em C++ com uma aplicação web desenvolvida em HTML, CSS e JavaScript, permitindo operação remota, execução de processos automáticos e acompanhamento de métricas.
 
 👉 VISÃO GERAL
+
 O ESP32 opera em modo Access Point, hospedando um servidor HTTP na porta 80. Através de qualquer navegador conectado à rede criada pelo dispositivo, é possível:
 - Controlar manualmente 8 saídas digitais (atuadores) 
 - Executar um processo automático sequencial
@@ -10,7 +11,9 @@ O ESP32 opera em modo Access Point, hospedando um servidor HTTP na porta 80. Atr
 
 
 👉 ARQUITETURA DO SISTEMA
+
 ⏺️ CAMADA EMBARCADA (C++ / ESP32)
+
 - Servidor HTTP com WiFiServer
 - Controle de 8 saídas digitais
 - Leitura de 8 entradas digitais
@@ -20,6 +23,7 @@ O ESP32 opera em modo Access Point, hospedando um servidor HTTP na porta 80. Atr
 - Endpoint JSON para monitoramento em tempo real
 
 ⏺️ CAMADA WEB (HTML + CSS + JavaScript)
+
 - Interface responsiva hospedada no próprio ESP32
 - Atualização dinâmica de status via endpoint /status
 - Botões de controle manual ON/OFF
@@ -28,10 +32,13 @@ O ESP32 opera em modo Access Point, hospedando um servidor HTTP na porta 80. Atr
 
 
 👉 FUNCIONALIDADES PRINCIPAIS
+
 ⏺️ CONTROLE MANUAL
+
 Permite acionamento individual de cada saída digital através de rotas HTTP específicas, mantendo sincronização de estado entre firmware e interface.
 
 ⏺️ PROCESSO AUTOMÁTICO
+
 Execução sequencial de etapas industriais simuladas:
 - Acionamento de magazine 
 - Avanço e recuo
@@ -40,13 +47,16 @@ Execução sequencial de etapas industriais simuladas:
 - O sistema mede o tempo total do ciclo e registra o resultado para análise posterior.
 
 ⏺️ MONITORAMENTO EM TEMPO REAL
+
 Endpoint /status retorna JSON com o estado atual dos sensores, permitindo leitura dinâmica via JavaScript.
 
 ⏺️ HISTÓRICO DE PROCESSOS
+
 Armazena número do ciclo executado, tempo total e horário relativo desde a inicialização do sistema.
 
 
 👉 CONCEITOS TÉCNICOS APLICADOS
+
 - Sistemas embarcados com ESP32
 - Comunicação Wi-Fi em modo Access Point
 - Implementação de servidor HTTP embarcado

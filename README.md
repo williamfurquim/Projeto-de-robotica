@@ -1,4 +1,4 @@
-🚨 Este projeto depende da comunicação com uma ESP32 em rede local, exigindo conexão ao Wi-Fi do dispositivo, o que impossibilita sua disponibilização pública online.
+📶 Este projeto depende da comunicação com uma ESP32 em rede local, exigindo conexão ao Wi-Fi do dispositivo, o que impossibilita sua disponibilização pública online.
 --
 
 Interface gráfica para controle e monitoramento em tempo real de sensores e atuadores robóticos utilizando ESP32 com comunicação via Wi-Fi. O sistema integra firmware embarcado em C++ com uma aplicação web desenvolvida em HTML, CSS e JavaScript, permitindo operação remota, execução de processos automáticos e acompanhamento de métricas.

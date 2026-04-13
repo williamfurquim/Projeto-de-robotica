@@ -1,71 +1,81 @@
-📶 Este projeto depende da comunicação com uma ESP32 em rede local, exigindo conexão ao Wi-Fi do dispositivo, o que impossibilita sua disponibilização pública online.
---
+# ESP32 Robotic Control Interface
 
-Interface gráfica para controle e monitoramento em tempo real de sensores e atuadores robóticos utilizando ESP32 com comunicação via Wi-Fi. O sistema integra firmware embarcado em C++ com uma aplicação web desenvolvida em HTML, CSS e JavaScript, permitindo operação remota, execução de processos automáticos e acompanhamento de métricas.
+Interface web para monitoramento e controle em tempo real de sistemas de automação industrial utilizando microcontrolador ESP32.
 
-👉 VISÃO GERAL
+---
 
-O ESP32 opera em modo Access Point, hospedando um servidor HTTP na porta 80. Através de qualquer navegador conectado à rede criada pelo dispositivo, é possível:
-- Controlar manualmente 8 saídas digitais (atuadores) 
-- Executar um processo automático sequencial
-- Monitorar 8 entradas digitais (sensores) em tempo real
-- Visualizar histórico de execução e tempo de ciclo
-- O sistema abstrai a complexidade do firmware embarcado por meio de uma interface web responsiva e intuitiva.
+## Visão geral
 
+Este projeto integra computação embarcada e desenvolvimento web para controle de uma célula robótica de transporte de peças. A solução permite acionar atuadores e monitorar sensores industriais via rede local, utilizando uma interface web leve e responsiva.
 
-👉 ARQUITETURA DO SISTEMA
+---
 
-⏺️ CAMADA EMBARCADA (C++ / ESP32)
+## Principais competências demonstradas
 
-- Servidor HTTP com WiFiServer
-- Controle de 8 saídas digitais
-- Leitura de 8 entradas digitais
-- Execução de sequência automatizada com temporização controlada
-- edição de tempo de ciclo do processo
-- Registro de histórico com timestamp relativo
-- Endpoint JSON para monitoramento em tempo real
+* Programação embarcada com ESP32 (C/C++)
+* Desenvolvimento de servidores HTTP embarcados
+* Integração hardware-software
+* Comunicação via JSON
+* Controle de I/O digital (entradas e saídas)
+* Implementação de lógica de automação industrial
+* Manipulação de temporização não bloqueante (`millis`)
+* Desenvolvimento de interface web embarcada
+* Debugging de hardware e conectividade
 
-⏺️ CAMADA WEB (HTML + CSS + JavaScript)
+---
 
-- Interface responsiva hospedada no próprio ESP32
-- Atualização dinâmica de status via endpoint /status
-- Botões de controle manual ON/OFF
-- Página dedicada ao processo automático
-- Página de histórico de execução
+## Tecnologias
 
+### Camada embarcada
 
-👉 FUNCIONALIDADES PRINCIPAIS
+* ESP32
+* C/C++
+* Servidor HTTP embarcado
 
-⏺️ CONTROLE MANUAL
+### Camada web
 
-Permite acionamento individual de cada saída digital através de rotas HTTP específicas, mantendo sincronização de estado entre firmware e interface.
+* JavaScript
+* HTML
+* CSS
 
-⏺️ PROCESSO AUTOMÁTICO
+---
 
-Execução sequencial de etapas industriais simuladas:
-- Acionamento de magazine 
-- Avanço e recuo
-- Ativação de vácuo
-- Manipulação e liberação de peça
-- O sistema mede o tempo total do ciclo e registra o resultado para análise posterior.
+## Arquitetura
 
-⏺️ MONITORAMENTO EM TEMPO REAL
+O sistema é dividido em duas camadas principais:
 
-Endpoint /status retorna JSON com o estado atual dos sensores, permitindo leitura dinâmica via JavaScript.
+* **Firmware (ESP32)**: responsável pelo controle de entradas/saídas e execução da lógica de automação
+* **Interface Web**: responsável pela interação com o usuário e consumo de endpoints JSON
 
-⏺️ HISTÓRICO DE PROCESSOS
+O ESP32 atua como Access Point e servidor HTTP, eliminando dependência de infraestrutura externa.
 
-Armazena número do ciclo executado, tempo total e horário relativo desde a inicialização do sistema.
+---
 
+## Funcionalidades
 
-👉 CONCEITOS TÉCNICOS APLICADOS
+* Controle manual de atuadores (motores, válvulas, vácuo)
+* Execução de ciclo automático de operação
+* Monitoramento em tempo real de sensores
+* Exibição de estados via interface web
+* Registro de tempo de ciclo
 
-- Sistemas embarcados com ESP32
-- Comunicação Wi-Fi em modo Access Point
-- Implementação de servidor HTTP embarcado
-- Manipulação de requisições GET
-- Serialização de dados em JSON
-- Controle de GPIO (entradas e saídas digitais)
-- Temporização e medição de tempo com millis()
-- Integração firmware + interface web
-- Organização modular de páginas HTML via arquivos externos
+---
+
+## Desafios técnicos
+
+* Estabilização da conexão Wi-Fi do ESP32
+* Diagnóstico e correção de falhas físicas no hardware
+* Implementação de lógica sequencial sem bloqueio do sistema
+* Garantia de resposta em tempo real durante operação contínua
+
+---
+
+## Objetivo do projeto
+
+Demonstrar capacidade de integração entre software e hardware, desenvolvimento de sistemas embarcados e construção de interfaces para controle de processos industriais em tempo real.
+
+---
+
+## Autor
+
+William Furquim

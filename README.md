@@ -23,9 +23,9 @@ O projeto integra computação embarcada e desenvolvimento web para acionamento 
 
 O sistema adota uma arquitetura descentralizada de duas camadas, eliminando qualquer dependência de internet externa (Edge Computing local):
 
-*   **Camada de Interface**: Construída com HTML5, CSS3 e Vanilla JavaScript. Ela roda diretamente no navegador do usuário e realiza requisições HTTP assíncronas consumindo endpoints JSON expostos pelo microcontrolador.
+*   **Camada de Interface**: Construída com HTML5, CSS3 e Vanilla JavaScript, roda diretamente no navegador do usuário e realiza requisições HTTP assíncronas consumindo endpoints JSON expostos pelo microcontrolador.
 
-*   **Camada de Firmware**: Roda diretamente no ESP32, que atua simultaneamente como Access Point (provendo a rede Wi-Fi) e como Servidor HTTP Embarcado. Esta camada processa as requisições web, executa a lógica sequencial de automação e controla diretamente as portas de I/O Digital (entradas e saídas) conectadas aos sensores industriais, motores e válvulas do hardware.
+*   **Camada de Firmware**: Roda diretamente no ESP32, que atua simultaneamente como Access Point (provendo a rede Wi-Fi) e como Servidor HTTP Embarcado. Esta camada processa as requisições web, executa a lógica sequencial de automação e controla diretamente as portas de I/O digital (entradas e saídas) conectadas aos sensores industriais, motores e válvulas do hardware.
 
 ---
 
@@ -33,7 +33,7 @@ O sistema adota uma arquitetura descentralizada de duas camadas, eliminando qual
 
 Desenvolver para hardware escasso em recursos (memória e processamento) exige decisões de software diferentes do desenvolvimento web tradicional:
 
-### Programação Assíncrona e Não-Bloqueante (`millis`)
+### Programação Assíncrona e Não Bloqueante (`millis()`)
 Em automação industrial, congelar o processamento pode causar acidentes ou perda de leitura de sensores. Substituímos completamente o uso de funções bloqueantes como `delay()` pela checagem de tempo baseada na função `millis()`. Isso garante que o loop principal do ESP32 continue rodando e respondendo às requisições web enquanto monitora o tempo de ciclo dos motores em background.
 
 ---
@@ -42,7 +42,7 @@ Em automação industrial, congelar o processamento pode causar acidentes ou per
 
 *   **Controle Manual Baseado em Eventos:** Acionamento individual de motores, válvulas e sistemas de vácuo diretamente pela tela.
 *   **Ciclo Automático de Operação:** Rotina sequencial automatizada para transporte contínuo de peças.
-*   **Telemetria Real-time:** Monitoramento visual do estado de sensores industriais e registro preciso do tempo de ciclo da máquina.
+*   **Telemetria em Tempo Real:** Monitoramento visual do estado de sensores industriais e registro preciso do tempo de ciclo da máquina.
 
 ---
 

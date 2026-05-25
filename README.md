@@ -1,81 +1,60 @@
-# ESP32 Robotic Control Interface
+# 🤖 ESP32 Robotic Control Interface
 
-Interface web para monitoramento e controle em tempo real de sistemas de automação industrial utilizando microcontrolador ESP32.
+> Interface Web para monitoramento e controle em tempo real de uma célula robótica de transporte de peças industriais.
 
----
+⚠️ **NOTA DE CONECTIVIDADE:** Esta aplicação roda de forma 100% embarcada no microcontrolador ESP32 atuando como *Access Point*. Não há link web público! A interface é acessada localmente ao conectar-se à rede Wi-Fi emitida pelo próprio chip.
 
-## Visão geral
+[![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
+[![ESP32](https://img.shields.io/badge/ESP32-E7352C?style=for-the-badge&logo=espressif&logoColor=white)](https://www.espressif.com/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/)
 
-Este projeto integra computação embarcada e desenvolvimento web para controle de uma célula robótica de transporte de peças. A solução permite acionar atuadores e monitorar sensores industriais via rede local, utilizando uma interface web leve e responsiva.
-
----
-
-## Principais competências demonstradas
-
-* Programação embarcada com ESP32 (C/C++)
-* Desenvolvimento de servidores HTTP embarcados
-* Integração hardware-software
-* Comunicação via JSON
-* Controle de I/O digital (entradas e saídas)
-* Implementação de lógica de automação industrial
-* Manipulação de temporização não bloqueante (`millis`)
-* Desenvolvimento de interface web embarcada
-* Debugging de hardware e conectividade
+O projeto integra computação embarcada e desenvolvimento web para acionamento de atuadores e leitura de sensores industriais via rede local, utilizando uma interface leve, responsiva e de baixa latência.
 
 ---
 
-## Tecnologias
+## 📸 Demonstração do Painel de Controle
 
-### Camada embarcada
+<img width="900" height="1600" alt="WhatsApp Image 2026-05-24 at 21 01 33" src="https://github.com/user-attachments/assets/ac0f28bb-3a1f-49ae-a79a-8634c653a8c7" />
 
-* ESP32
-* C/C++
-* Servidor HTTP embarcado
-
-### Camada web
-
-* JavaScript
-* HTML
-* CSS
 
 ---
 
-## Arquitetura
+## 🏗️ Arquitetura do Sistema
 
-O sistema é dividido em duas camadas principais:
+O sistema adota uma arquitetura descentralizada de duas camadas, eliminando qualquer dependência de internet externa (Edge Computing local):
 
-* **Firmware (ESP32)**: responsável pelo controle de entradas/saídas e execução da lógica de automação
-* **Interface Web**: responsável pela interação com o usuário e consumo de endpoints JSON
+*   **Camada de Interface**: Construída com HTML5, CSS3 e Vanilla JavaScript. Ela roda diretamente no navegador do usuário e realiza requisições HTTP assíncronas consumindo endpoints JSON expostos pelo microcontrolador.
 
-O ESP32 atua como Access Point e servidor HTTP, eliminando dependência de infraestrutura externa.
-
----
-
-## Funcionalidades
-
-* Controle manual de atuadores (motores, válvulas, vácuo)
-* Execução de ciclo automático de operação
-* Monitoramento em tempo real de sensores
-* Exibição de estados via interface web
-* Registro de tempo de ciclo
+*   **Camada de Firmware**: Roda diretamente no ESP32, que atua simultaneamente como Access Point (provendo a rede Wi-Fi) e como Servidor HTTP Embarcado. Esta camada processa as requisições web, executa a lógica sequencial de automação e controla diretamente as portas de I/O Digital (entradas e saídas) conectadas aos sensores industriais, motores e válvulas do hardware.
 
 ---
 
-## Desafios técnicos
+## ⚡ Engenharia e Soluções para os Desafios Técnicos
 
-* Estabilização da conexão Wi-Fi do ESP32
-* Diagnóstico e correção de falhas físicas no hardware
-* Implementação de lógica sequencial sem bloqueio do sistema
-* Garantia de resposta em tempo real durante operação contínua
+Desenvolver para hardware escasso em recursos (memória e processamento) exige decisões de software diferentes do desenvolvimento web tradicional:
 
----
-
-## Objetivo do projeto
-
-Demonstrar capacidade de integração entre software e hardware, desenvolvimento de sistemas embarcados e construção de interfaces para controle de processos industriais em tempo real.
+### Programação Assíncrona e Não-Bloqueante (`millis`)
+Em automação industrial, congelar o processamento pode causar acidentes ou perda de leitura de sensores. Substituímos completamente o uso de funções bloqueantes como `delay()` pela checagem de tempo baseada na função `millis()`. Isso garante que o loop principal do ESP32 continue rodando e respondendo às requisições web enquanto monitora o tempo de ciclo dos motores em background.
 
 ---
 
-## Autor
+## 🚀 Funcionalidades Implementadas
 
-William Furquim
+*   **Controle Manual Baseado em Eventos:** Acionamento individual de motores, válvulas e sistemas de vácuo diretamente pela tela.
+*   **Ciclo Automático de Operação:** Rotina sequencial automatizada para transporte contínuo de peças.
+*   **Telemetria Real-time:** Monitoramento visual do estado de sensores industriais e registro preciso do tempo de ciclo da máquina.
+
+---
+
+## 🛠️ Hardware & Tecnologias Utilizadas
+
+*   **Camada Embarcada:** Microcontrolador ESP32, Linguagem C/C++ (Framework Arduino), Servidor HTTP Nativo.
+*   **Camada Web:** HTML5, CSS3, Vanilla JavaScript.
+
+---
+
+## 👥 Desenvolvedores
+
+*   [William Furquim](https://github.com/williamfurquim)
+*   [Amanda Jaguella](https://github.com/AmandaJaguella)
+*   [Emilly Nascimento](#)
